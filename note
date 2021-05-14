@@ -1,0 +1,30 @@
+tag writer
+$APICdata = file_get_contents($_FILES['imageCover']['tmp_name']);
+    
+$exif_imagetype = exif_imagetype($_FILES['imageCover']['tmp_name']);
+
+// populate data array
+    $TagData = array(
+        'title'                  => array($title),
+        'subtitle'               => array($subtitle),
+        'encoded_by'             => array($enc_by),
+        'band'                   => array($band),
+        'publisher'              => array($band),
+        'artist'                 => array($audioFileToEditArtist),
+        'album'                  => array($album),
+        'year'                   => array($year),
+        'genre'                  => array($genre),
+        'comment'                => array($comment),
+        'track_number'           => array($track_number),
+        'popularimeter'          => array('email'=>'paulosab@example.net', 'rating'=>128, 'data'=>$rating),
+        'unique_file_identifier' => array('ownerid'=>'paulosab@example.net', 'data'=>md5(time())),
+    );
+    
+    // Audio file Cover Picture
+    $TagData['attached_picture'][0]['data']          = $APICdata;
+    $TagData['attached_picture'][0]['picturetypeid'] = 2;
+    $TagData['attached_picture'][0]['description']   = $title;
+    $TagData['attached_picture'][0]['mime']          = image_type_to_mime_type($exif_imagetype);
+    
+    // write the tags
+    $tagwriter->tag_data = $TagData;
