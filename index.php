@@ -268,13 +268,13 @@ $getID3 = new getID3();
               }
             }
             
-            // $remotefilename = 'mp3 audio files\\Corporate Ambient - AShamaluevMusic.mp3';
+            $remotefilename = 'mp3 audio files\\edittedDeep Chillout - AShamaluevMusic609e592098894.mp3';
   
-            // $mp3FileInfo = $getID3->analyze($remotefilename);
+            $mp3FileInfo = $getID3->analyze($remotefilename);
   
-            // $getID3->CopyTagsToComments($mp3FileInfo);
+            $getID3->CopyTagsToComments($mp3FileInfo);
             
-            // echo var_dump($mp3FileInfo);
+            echo var_dump($mp3FileInfo);
             
             ?>
           </table>
